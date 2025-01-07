@@ -1,0 +1,185 @@
+--каталоги--
+Создание каталога
+POST
+http://localhost:3000/api/catalogs/
+{
+    "catalog": {
+        "catalogName": "Хуи"
+    }
+}
+
+Получение каталогов
+GET
+http://localhost:3000/api/catalogs/
+
+Удаление каталога
+DELETE 
+http:localhost:3000/api/catalogs/:id
+
+Изменение каталогов
+PUT
+{
+    "catalog": {
+        "id": "1cf49b22-cb2b-41af-aa65-36a73be132ed",
+        "catalogName": "Куртки"
+    }
+}
+
+
+
+
+
+
+
+--товары--
+Создание товара 
+POST
+http://localhost:3000/api/products/
+{
+    "product": {
+        "catalogId": "1cf49b22-cb2b-41af-aa65-36a73be132ed",
+        "name": "Куртка от Димы",
+        "description": "Хуй",
+        "price": 100
+    },
+    "sizes": []
+}
+
+Получение товаров
+GET
+http://localhost:3000/api/products/
+
+Получение товара
+GET
+http://localhost:3000/api/products/:id
+
+Получение товаров по каталогу
+GET
+http://localhost:3000/api/products/catalog/:id
+
+Изменение товара
+PUT
+http://localhost:3000/api/products/
+{
+    "product": {
+        "id": "b51f6455-19a7-45ef-9053-c5d258ce64a7",
+        "catalogId": "1cf49b22-cb2b-41af-aa65-36a73be132ed",
+        "name": "Куртка от Димы",
+        "description": "Хуй",
+        "price": 100
+    }
+}
+
+Удаление товара
+DELETE
+http://localhost:3000/api/products/:id
+
+
+
+
+
+
+
+
+
+--размеры--
+Добавление размера
+POST
+http://localhost:3000/api/sizes/
+{
+    "size": {
+        "productId": "6add01b2-5264-4304-9cb4-b1478b29d9d4",
+        "sizeSymb": "XL"
+    }
+}
+
+Изменение состояние размера
+PUT
+http://localhost:3000/api/sizes/:id/toggle
+
+Удаление размера
+DELETE
+http://localhost:3000/api/sizes/:id
+
+
+
+
+
+
+
+
+
+--заказы--
+Оформление заказа
+POST
+http://localhost:3000/api/orders/
+{
+    "order": {
+        "fio": "Андрей Касач",
+        "email": "kasach.andrey@gmail.com",
+        "phone": "375297579370",
+        "address": "ул Гастелло",
+        "city": "Лида"
+    },
+    "orderItems": [
+        {
+            "productId": "6add01b2-5264-4304-9cb4-b1478b29d9d4",
+            "count": 2,
+            "size": {
+                "id": "91ad3b3a-4d96-43d9-9983-c8036f8f6f6d"
+            }
+        }
+    ]
+}
+
+Получение заказов
+GET
+http://localhost:3000/api/orders/
+
+Получение заказа
+GET
+http://localhost:3000/api/orders/:id
+
+Изменение статуса заказа
+PUT
+http://localhost:3000/api/orders/status
+{
+    "orderId": "9ac05605-0d05-4e0c-93e2-34d3c456a602",
+    "statusId": "879774fa-5819-4f0a-8223-dd6b8dad4cdd"
+}
+
+
+
+
+
+
+
+
+
+
+--статусы--
+Получение статусов
+http://localhost:3000/api/statuses/
+
+Добавление статуса
+POST
+http://localhost:3000/api/statuses/
+{
+    "status": {
+        "statusName": "Доставлен"
+    }
+}
+
+Изменение статуса
+PUT 
+http://localhost:3000/api/statuses/
+{
+    "status": {
+        "id": "57a6e689-7b1a-4c65-b580-898d2cdab34f",
+        "statusName": "Доставлен"
+    }
+}
+
+Удаление статуса
+DELETE
+http://localhost:3000/api/statuses/:id
