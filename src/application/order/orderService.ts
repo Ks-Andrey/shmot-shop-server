@@ -34,8 +34,8 @@ class OrderService {
             
         const order = OrderMapper.mapDTOToOrder(orderDto, defaultStatus);
         const orderItems = OrderMapper.mapDTOToOrderItems(orderItemsDto, order, products);
-
         order.setOrderItems(orderItems);
+
         const { formUrl, orderId } = await makePayment(order.price, successPageLink, order.number);
         order.setOrderId(orderId);
     

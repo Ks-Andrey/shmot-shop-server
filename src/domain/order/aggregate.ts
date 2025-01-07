@@ -1,3 +1,4 @@
+import { deliveryPrice } from "../..";
 import { UUID } from "../../types";
 import { OrderItem, Status } from "./entities";
 import { OrderError } from "./exceptions";
@@ -68,7 +69,7 @@ export class Order {
         }
 
         this.orderItems = orderItems;
-        this.price = orderItems.reduce((sum, item) => sum += item.price * item.count, 0);
+        this.price = orderItems.reduce((sum, item) => sum += item.price * item.count, +deliveryPrice);
     }
 
     setOrderId (orderId: UUID) {

@@ -25,7 +25,7 @@ export class CatalogRepo implements ICatalogRepo {
 
     async getAllCatalogs(): Promise<Catalog[]> {
         try {
-            const result = await this.pool.query('SELECT * FROM catalogs ORDER BY add_date DESC');
+            const result = await this.pool.query('SELECT * FROM catalogs ORDER BY add_date ASC');
             return result.rows.map((row:any) => Catalog.create(row?.id, row?.catalog_name));
         } catch (error) {
             console.log(error);
